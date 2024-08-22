@@ -1,32 +1,75 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app id="inspire">
+    <!-- App Bar -->
+    <v-app-bar color="primary" dark>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-title class="app-bar-title">Svijet novosti</v-app-bar-title>
+    </v-app-bar>
+
+    <!-- Navigation Drawer -->
+    <v-navigation-drawer
+      v-model="drawer"
+      temporary
+      app
+      color="secondary"
+      class="pa-4"
+    >
+      <v-list >
+        <v-list-item>
+          <router-link to="/" class="v-list-item__content">
+            <v-list-item-title>Početna</v-list-item-title>
+          </router-link>
+        </v-list-item>
+        <v-list-item>
+          <router-link to="/about" class="v-list-item__content">
+            <v-list-item-title>O nama</v-list-item-title>
+          </router-link>
+        </v-list-item>
+        <v-list-item>
+          <router-link to="/contact" class="v-list-item__content">
+            <v-list-item-title>Kontakt</v-list-item-title>
+          </router-link>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- Main Content -->
+    <v-main class="main-content">
+      <v-container>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script setup>
+  import { ref } from 'vue';
+
+  const drawer = ref(false);
+</script>
+
+<style scoped>
+/* Additional custom styles */
+.v-app-bar {
+  box-shadow: 0 2px 4px rgba(87, 86, 86, 0.1);
 }
 
-nav {
-  padding: 30px;
+.v-navigation-drawer {
+  width: 250px;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.main-content {
+  background-color: #EEEEEE; /* Light grey background color */
+}
+.v-list-item__content {
+  text-decoration: none;
+  font-weight: bold; 
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.app-bar-title {
+  font-size: 1.5rem; /* Adjust size as needed */
+  font-weight: 600; /* Make title bold */
+  letter-spacing: 0.5px; /* Adjust letter spacing */
+  color: #ffffff; /* White text color */
 }
 </style>
