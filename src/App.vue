@@ -1,12 +1,10 @@
 <template>
   <v-app id="inspire">
-    <!-- App Bar -->
     <v-app-bar color="primary" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title class="app-bar-title">Svijet novosti</v-app-bar-title>
     </v-app-bar>
 
-    <!-- Navigation Drawer -->
     <v-navigation-drawer
       v-model="drawer"
       temporary
@@ -18,6 +16,16 @@
         <v-list-item>
           <router-link to="/" class="v-list-item__content">
             <v-list-item-title>Početna</v-list-item-title>
+          </router-link>
+        </v-list-item>
+        <v-list-item>
+          <router-link to="/world" class="v-list-item__content">
+            <v-list-item-title>Novosti iz svijeta</v-list-item-title>
+          </router-link>
+        </v-list-item>
+        <v-list-item>
+          <router-link to="/arts" class="v-list-item__content">
+            <v-list-item-title>Svijet umjetnosti</v-list-item-title>
           </router-link>
         </v-list-item>
         <v-list-item>
@@ -49,7 +57,6 @@
 </script>
 
 <style scoped>
-/* Additional custom styles */
 .v-app-bar {
   box-shadow: 0 2px 4px rgba(87, 86, 86, 0.1);
 }
@@ -59,7 +66,7 @@
 }
 
 .main-content {
-  background-color: #EEEEEE; /* Light grey background color */
+  background-color: #EEEEEE; 
 }
 .v-list-item__content {
   text-decoration: none;
@@ -67,9 +74,9 @@
 }
 
 .app-bar-title {
-  font-size: 1.5rem; /* Adjust size as needed */
-  font-weight: 600; /* Make title bold */
-  letter-spacing: 0.5px; /* Adjust letter spacing */
-  color: #ffffff; /* White text color */
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  letter-spacing: 0.5px; 
+  color: #ffffff; 
 }
 </style>
