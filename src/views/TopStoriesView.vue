@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <v-subheader class="text-center font-weight-bold display-2">Novosti iz svijeta umjetnosti</v-subheader>
-    <hr>
+    <v-subheader class="text-center font-weight-bold display-2">Top novosti iz svijeta</v-subheader>
+    <hr />
 
     <v-text-field
       v-model="searchArticle"
@@ -12,13 +12,11 @@
     ></v-text-field>
 
     <v-row v-if="filteredArticles.length">
-      <v-col
-        v-for="article in paginatedArticles"
-        :key="article.url"
-        cols="12"
-        md="6"
-        lg="4"
-      >
+      <v-col v-for="article in paginatedArticles" 
+        :key="article.id" 
+        cols="12" 
+        md="6" 
+        lg="4">
         <ArticleCard
           :imageSrc="article.multimedia.length ? article.multimedia[0].url : ''"
           :title="article.title"
@@ -31,7 +29,7 @@
 
     <v-row v-else>
       <v-col cols="12">
-        <p>No articles found.</p>
+        <p>Nema članaka za prikaz.</p>
       </v-col>
     </v-row>
 
@@ -52,7 +50,7 @@
 import ArticleCard from '@/components/ArticleCard.vue';
 
 export default {
-  name: 'ArtsArticleView',
+  name: 'WorldArticleView',
   components: {
     ArticleCard,
   },
@@ -85,25 +83,26 @@ export default {
   },
   methods: {
     fetchArticles() {
-      const api = `https://api.nytimes.com/svc/topstories/v2/arts.json`;
+      const api = `https://api.nytimes.com/svc/topstories/v2/world.json`;
 
-      this.axios.get(api, {
-        params: {
-          'api-key': 'qAq0cVcFkOZWze3Mews5iD9W9etUc77j'
-        }
-      })
-      .then((response) => {
-        this.articles = response.data.results;
-        this.filteredArticles = this.articles;
-        this.updatePaginatedArticles();
-      })
-      .catch(error => {
-        console.error("There was an error fetching the articles:", error);
-      });
+      this.axios
+        .get(api, {
+          params: {
+            'api-key': 'qAq0cVcFkOZWze3Mews5iD9W9etUc77j',
+          },
+        })
+        .then((response) => {
+          this.articles = response.data.results;
+          this.filteredArticles = this.articles;
+          this.updatePaginatedArticles();
+        })
+        .catch((error) => {
+          console.error('There was an error fetching the articles:', error);
+        });
     },
     filterArticles() {
       const searchArticleLower = this.searchArticle.toLowerCase();
-      this.filteredArticles = this.articles.filter(article =>
+      this.filteredArticles = this.articles.filter((article) =>
         article.title.toLowerCase().includes(searchArticleLower)
       );
     },

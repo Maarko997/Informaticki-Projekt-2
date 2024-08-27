@@ -10,30 +10,24 @@
       temporary
       app
       color="secondary"
-      class="pa-4"
-    >
-      <v-list >
-        <v-list-item>
+      class="pa-4">
+      <v-list>
+        <v-list-item class="v-list-item--link theme--dark">
           <router-link to="/" class="v-list-item__content">
             <v-list-item-title>Početna</v-list-item-title>
           </router-link>
         </v-list-item>
-        <v-list-item>
-          <router-link to="/world" class="v-list-item__content">
-            <v-list-item-title>Novosti iz svijeta</v-list-item-title>
+        <v-list-item class="v-list-item--link theme--dark">
+          <router-link to="/topStories" class="v-list-item__content">
+            <v-list-item-title>Top priče</v-list-item-title>
           </router-link>
         </v-list-item>
-        <v-list-item>
-          <router-link to="/arts" class="v-list-item__content">
-            <v-list-item-title>Svijet umjetnosti</v-list-item-title>
-          </router-link>
-        </v-list-item>
-        <v-list-item>
+        <v-list-item class="v-list-item--link theme--dark">
           <router-link to="/about" class="v-list-item__content">
             <v-list-item-title>O nama</v-list-item-title>
           </router-link>
         </v-list-item>
-        <v-list-item>
+        <v-list-item class="v-list-item--link theme--dark">
           <router-link to="/contact" class="v-list-item__content">
             <v-list-item-title>Kontakt</v-list-item-title>
           </router-link>
@@ -41,7 +35,6 @@
       </v-list>
     </v-navigation-drawer>
 
-    <!-- Main Content -->
     <v-main class="main-content">
       <v-container>
         <router-view></router-view>
@@ -52,7 +45,6 @@
 
 <script setup>
   import { ref } from 'vue';
-
   const drawer = ref(false);
 </script>
 
@@ -79,4 +71,9 @@
   letter-spacing: 0.5px; 
   color: #ffffff; 
 }
+
+.v-list-item a{
+  color: white;
+}
+
 </style>
