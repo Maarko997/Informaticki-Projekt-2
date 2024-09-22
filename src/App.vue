@@ -18,13 +18,13 @@
           </router-link>
         </v-list-item>
         <v-list-item class="v-list-item--link theme--dark">
-          <router-link to="/topStories" class="v-list-item__content">
-            <v-list-item-title>Top priče</v-list-item-title>
+          <router-link to="/about" class="v-list-item__content">
+            <v-list-item-title>O nama</v-list-item-title>
           </router-link>
         </v-list-item>
         <v-list-item class="v-list-item--link theme--dark">
-          <router-link to="/about" class="v-list-item__content">
-            <v-list-item-title>O nama</v-list-item-title>
+          <router-link to="/addArticle" class="v-list-item__content">
+            <v-list-item-title>Dodaj članak</v-list-item-title>
           </router-link>
         </v-list-item>
         <v-list-item class="v-list-item--link theme--dark">

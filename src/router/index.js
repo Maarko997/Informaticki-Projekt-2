@@ -11,9 +11,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/topStories',
-    name: 'topStoreis',
-    component: () => import('../views/TopStoriesView.vue')
+    path: '/addArticle',
+    name: 'addArticle',
+    component: () => import('../views/AddArticleView.vue')
   },
   {
     path: '/about',

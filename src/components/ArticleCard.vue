@@ -6,14 +6,15 @@
     elevation="2"
   >
     <v-img
-      :src="imageSrc"
+      :src="slika"
       class="card-img"
     ></v-img>
-    <v-card-title>{{ title }}</v-card-title>
+    <v-card-title>{{ naslov }}</v-card-title>
     <v-card-subtitle>
-      <small class="text-body-secondary">{{ publishedDate }}</small>
+      <small class="text-body-secondary">{{ formattedDate }}</small>
     </v-card-subtitle>
-    <v-card-text>{{ abstract }}</v-card-text>
+
+    <v-card-text>{{ opis }}</v-card-text>
   </v-card>
 </template>
 
@@ -21,19 +22,19 @@
 export default {
   name: 'ArticleCard',
   props: {
-    imageSrc: {
+    slika: {
       type: String,
       required: true
     },
-    title: {
+    naslov: {
       type: String,
       required: true
     },
-    publishedDate: {
+    datum_objave: {
       type: String,
       required: true
     },
-    abstract: {
+    opis: {
       type: String,
       required: true
     },
@@ -41,9 +42,20 @@ export default {
       type: String,
       required: true
     }
-}
+  },
+  computed: {
+    formattedDate() {
+      const date = new Date(this.datum_objave);
+      return date.toLocaleDateString('hr-HR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+  }
 }
 </script>
+
 
 <style scoped>
 .card {
